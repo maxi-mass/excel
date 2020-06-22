@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import "~normalize.css";
 
+@import "variables";
+@import "mixins";
 @import "header";
 @import "toolbar";
 @import "formula";
