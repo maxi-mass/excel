@@ -24,3 +24,9 @@
 @mixin border($color: $border-color) {
   border: 1px solid $color;
 }
+
+@mixin flex-align() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
