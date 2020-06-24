@@ -1,0 +1,74 @@
+.db {
+  &__header {
+    height: $dashboard-header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    @include flex-align();
+    background: #ffffff;
+    box-shadow: 0 2px 5px 2px rgba(60, 64, 67, 0.15);
+    z-index: 1000;
+  }
+  &__new {
+    margin-top: $dashboard-header-height;
+    padding: 1.5rem;
+    background: #dadce0;
+  }
+  &__view {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  &__create {
+    width: 160px;
+    height: 160px;
+    background: #ffffff;
+    border-radius: 4px;
+    @include border(#dadce0);
+    @include flex-align();
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+
+    &:hover {
+      border-color: green;
+      color: green;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  &__table {
+    padding: 1rem;
+  }
+  &__list-header {
+    display: flex;
+    justify-content: space-between;
+    color: #202124;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 0 12px;
+  }
+  &__list {
+    @include clear-list();
+  }
+  &__record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px 16px;
+    margin-bottom: 10px;
+    &:hover {
+      background: #e6f4ea;
+    }
+    a {
+      text-decoration: none;
+      color: #202124;
+      font-size: 13px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
