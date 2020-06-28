@@ -1,7 +1,25 @@
-class Dom {}
+class Dom {
+  constructor(selector) {
+    this.$nativeDomElement =
+      typeof selector === 'string' ? document.querySelector(selector) : selector
+  }
+  html(html) {
+    if (html) {
+      this.$nativeDomElement.innerHTML = html
+    }
+    return this.$nativeDomElement.outerHTML.trim()
+  }
+  append(node) {
+    if (node instanceof Dom) {
+      node = node.$nativeDomElement
+    }
+    this.$nativeDomElement.append(node)
+    return this
+  }
+}
 
-export function $() {
-  return new Dom()
+export function $(selector) {
+  return new Dom(selector)
 }
 
 $.create = (tagName, classes = []) => {
@@ -9,5 +27,6 @@ $.create = (tagName, classes = []) => {
   if (classes.length > 0) {
     el.classList.add(...classes);
   }
-  return el
+  return $(el)
 }
+
