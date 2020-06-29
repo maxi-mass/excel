@@ -1,8 +1,12 @@
 import { ExcelComponent } from '@core/ExcelComponent'
 
 export class Header extends ExcelComponent {
-  className = 'excel__header'
-  html = `
+  static className = 'excel__header'
+  constructor($root) {
+    super($root);
+  }
+  toHtml() {
+    return `
       <input type="text" class="input" value="New table" />
       <div>
           <div class="button">
@@ -13,4 +17,5 @@ export class Header extends ExcelComponent {
           </div>
       </div>
   `
+  }
 }
