@@ -11,14 +11,21 @@ export class DomListener {
   initListeners() {
     this.listeners.forEach(listener => {
       const method = getMethod(this, listener)
-      if (method) {
-        this.$root.on(listener, method.bind(this))
+      this[method] = method.bind(this)
+
+      if (this[method]) {
+        this.$root.on(listener, this[method])
       } else {
         console.error(`Method for ${listener} listener is not available!!!`)
       }
     })
   }
-  removeListeners() {}
+  removeListeners() {
+    this.listeners.forEach(listener => {
+      const method = getMethod(this, listener)
+      this.$root.off(listener, this[method])
+    })
+  }
 }
 
 const getMethod = (context, listener) => {

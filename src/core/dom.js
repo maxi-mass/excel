@@ -14,11 +14,15 @@ class Dom {
     if (node instanceof Dom) {
       node = node.$nativeDomElement
     }
+
     this.$nativeDomElement.append(node)
     return this
   }
   on(eventType, callback) {
     this.$nativeDomElement.addEventListener(eventType, callback)
+  }
+  off(eventType, callback) {
+    this.$nativeDomElement.removeEventListener(eventType, callback)
   }
 }
 
