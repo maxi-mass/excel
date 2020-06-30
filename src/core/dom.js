@@ -1,7 +1,8 @@
 class Dom {
   constructor(selector) {
-    this.$nativeDomElement =
-      typeof selector === 'string' ? document.querySelector(selector) : selector
+    this.$nativeDomElement = typeof selector === 'string'
+        ? document.querySelector(selector)
+        : selector
   }
   html(html) {
     if (html) {
@@ -15,6 +16,9 @@ class Dom {
     }
     this.$nativeDomElement.append(node)
     return this
+  }
+  on(eventType, callback) {
+    this.$nativeDomElement.addEventListener(eventType, callback)
   }
 }
 

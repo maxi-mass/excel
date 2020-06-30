@@ -3,7 +3,9 @@ import { ExcelComponent } from '@core/ExcelComponent'
 export class Header extends ExcelComponent {
   static className = 'excel__header'
   constructor($root) {
-    super($root);
+    super($root, {
+      listeners: ['click']
+    });
   }
   toHtml() {
     return `
@@ -17,5 +19,8 @@ export class Header extends ExcelComponent {
           </div>
       </div>
   `
+  }
+  onClick(event) {
+    console.log(this.$root)
   }
 }

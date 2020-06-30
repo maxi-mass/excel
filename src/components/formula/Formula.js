@@ -4,7 +4,7 @@ export class Formula extends ExcelComponent {
   static className = 'excel__formula'
   constructor($root) {
     super($root, {
-      listeners: ['input']
+      listeners: ['input', 'click']
     });
   }
   toHtml() {
@@ -14,6 +14,9 @@ export class Formula extends ExcelComponent {
     `
   }
   onInput(event) {
-    console.log(event)
+    console.log(this)
+  }
+  onClick(event) {
+    console.log(this.$root)
   }
 }
