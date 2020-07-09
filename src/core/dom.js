@@ -24,6 +24,12 @@ class Dom {
   off(eventType, callback) {
     this.$nativeDomElement.removeEventListener(eventType, callback)
   }
+  closest(selector) {
+    return $(this.$nativeDomElement.closest(selector))
+  }
+  getCoordinates() {
+    return this.$nativeDomElement.getBoundingClientRect()
+  }
 }
 
 export function $(selector) {

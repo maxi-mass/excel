@@ -3,7 +3,7 @@ const LETTER_CODES = {
   Z: 90
 }
 const toChar = (_, ix) => String.fromCharCode(LETTER_CODES.A + ix)
-const toCol = el => `<div class="column">${el}
+const toCol = el => `<div class="column" data-type="resizable">${el}
                         <div class="col-resize" data-resize="col"></div>
                      </div>`
 const toCell = () =>
