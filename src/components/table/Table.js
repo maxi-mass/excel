@@ -17,11 +17,13 @@ export class Table extends ExcelComponent {
       const $target = $(event.target)
       const $parent = $target.closest('[data-type="resizable"]')
       const coordinates = $parent.getCoordinates()
-      console.log($parent)
+      const col = $parent.data.col
+      const cells = this.$root.findAll(`[data-col="${col}"]`)
+
       document.onmousemove = e => {
         const delta = e.pageX - coordinates.right
         const value = coordinates.width + delta + 'px'
-        $parent.$nativeDomElement.style.width = value
+        cells.forEach(el => el.style.width = value)
       }
 
       document.onmouseup = () => {

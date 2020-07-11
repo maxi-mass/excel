@@ -3,11 +3,13 @@ const LETTER_CODES = {
   Z: 90
 }
 const toChar = (_, ix) => String.fromCharCode(LETTER_CODES.A + ix)
-const toCol = el => `<div class="column" data-type="resizable">${el}
-                        <div class="col-resize" data-resize="col"></div>
-                     </div>`
-const toCell = () =>
-  `<div class="cell" contenteditable="true" spellcheck="false"></div>`
+const toCol = (el, ix) =>
+  `<div class="column" data-type="resizable" data-col="${ix}">${el}
+      <div class="col-resize" data-resize="col"></div>
+   </div>`
+const toCell = (_, ix) =>
+  `<div class="cell" contenteditable="true" spellcheck="false" data-col="${ix}">
+    </div>`
 
 function createRow(content, number = '') {
   const resizer = number

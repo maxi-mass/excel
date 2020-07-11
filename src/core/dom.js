@@ -30,6 +30,12 @@ class Dom {
   getCoordinates() {
     return this.$nativeDomElement.getBoundingClientRect()
   }
+  get data() {
+    return this.$nativeDomElement.dataset
+  }
+  findAll(selector) {
+    return this.$nativeDomElement.querySelectorAll(selector)
+  }
 }
 
 export function $(selector) {
