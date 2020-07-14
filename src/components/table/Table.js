@@ -26,11 +26,11 @@ export class Table extends ExcelComponent {
         if (type === 'col') {
           const delta = e.pageX - coordinates.right
           const value = coordinates.width + delta
-          cells.forEach(el => el.style.width = value + 'px')
+          cells.forEach(el => $(el).css({ width: value + 'px' }))
         } else {
           const delta = e.pageY - coordinates.bottom
           const value = coordinates.height + delta
-          $parent.$nativeDomElement.style.height = value + 'px'
+          $parent.css({ height: value + 'px' })
         }
       }
 

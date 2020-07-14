@@ -36,6 +36,10 @@ class Dom {
   findAll(selector) {
     return this.$nativeDomElement.querySelectorAll(selector)
   }
+  css(styles = {}) {
+    Object.keys(styles)
+        .forEach(key => this.$nativeDomElement.style[key] = styles[key])
+  }
 }
 
 export function $(selector) {
