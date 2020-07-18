@@ -1,6 +1,6 @@
 import { ExcelComponent } from '@core/ExcelComponent'
 import { createTable } from '@/components/table/table.template'
-import { $ } from '@/core/dom'
+import { mousemove } from '@/components/table/helper'
 
 export class Table extends ExcelComponent {
   constructor($root) {
@@ -13,30 +13,6 @@ export class Table extends ExcelComponent {
     return createTable(40)
   }
   onMousedown(event) {
-    if (event.target.dataset.resize) {
-      const $target = $(event.target)
-      const $parent = $target.closest('[data-type="resizable"]')
-      const coordinates = $parent.getCoordinates()
-      const type = $target.data.resize
-
-      const col = $parent.data.col
-      const cells = this.$root.findAll(`[data-col="${col}"]`)
-
-      document.onmousemove = e => {
-        if (type === 'col') {
-          const delta = e.pageX - coordinates.right
-          const value = coordinates.width + delta
-          cells.forEach(el => $(el).css({ width: value + 'px' }))
-        } else {
-          const delta = e.pageY - coordinates.bottom
-          const value = coordinates.height + delta
-          $parent.css({ height: value + 'px' })
-        }
-      }
-
-      document.onmouseup = () => {
-        document.onmousemove = null
-      }
-    }
+    mousemove(this.$root, event)
   }
 }
