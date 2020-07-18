@@ -24,6 +24,22 @@ class Dom {
   off(eventType, callback) {
     this.$nativeDomElement.removeEventListener(eventType, callback)
   }
+  closest(selector) {
+    return $(this.$nativeDomElement.closest(selector))
+  }
+  getCoordinates() {
+    return this.$nativeDomElement.getBoundingClientRect()
+  }
+  get data() {
+    return this.$nativeDomElement.dataset
+  }
+  findAll(selector) {
+    return this.$nativeDomElement.querySelectorAll(selector)
+  }
+  css(styles = {}) {
+    Object.keys(styles)
+        .forEach(key => this.$nativeDomElement.style[key] = styles[key])
+  }
 }
 
 export function $(selector) {
